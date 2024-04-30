@@ -1,0 +1,51 @@
+appId: 'bdstwlauncher'
+productName: 'BDSTW Launcher'
+artifactName: '${productName}-setup-${version}.${ext}'
+
+copyright: 'Copyright © 2021-2024 憶蝶夢海模組伺服器'
+
+asar: true
+compression: 'maximum'
+
+files:
+  - '!{dist,.gitignore,.vscode,docs,dev-app-update.yml,.nvmrc,.eslintrc.json}'
+
+extraResources:
+  - 'libraries'
+
+# Windows Configuration
+win: 
+  target: 
+    - target: 'nsis'
+      arch: 'x64'
+
+# Windows Installer Configuration
+nsis:
+  oneClick: true
+  perMachine: false
+  allowElevation: true
+  allowToChangeInstallationDirectory: false
+
+# macOS Configuration
+mac:
+  target:
+    - target: 'dmg'
+      arch:
+        - 'x64'
+        - 'arm64'
+  artifactName: '${productName}-setup-${version}-${arch}.${ext}'
+  category: 'public.app-category.games'
+
+# Linux Configuration
+linux: 
+  target: 'AppImage'
+  maintainer: '憶蝶夢海模組伺服器'
+  vendor: '憶蝶夢海模組伺服器'
+  synopsis: '模組創世神啟動器'
+  description: '模組創世神啟動器，允許使用者加入模組化的伺服器，所有的模組、配置都會自動更新，只要登入即可遊玩'
+  category: 'Game'
+
+
+directories:
+  buildResources: 'build'
+  output: 'dist'
